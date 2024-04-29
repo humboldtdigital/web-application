@@ -45,7 +45,7 @@
                <para>die Quelle, aus der der Text stammt,</para>
             </listitem>
             <listitem>
-               <para>die Bedingungen für die Erstellung</para>
+               <para>die Bedingungen für die Erstellung, sowie</para>
             </listitem>
             <listitem>
                <para>die Textart nach Kategorien.</para>
@@ -156,25 +156,25 @@
       <section>
          <title>Titel</title>
          <para>Alle Ausgaben wurden durch einen Haupttitel gekennzeichnet. Der Titel wurde orthographisch vereinheitlicht.</para>
-         <para>In <tag>titleStmt</tag> wurde die Kodierung des Haupttitels mithilfe des title-Elements und des Attributs <tag>type="main"</tag> vorgenommen. Zum Beispiel:</para>
+         <para>In <tag>titleStmt</tag> wurde die Kodierung des Haupttitels mithilfe des title-Elements und des Attributs <tag>@type="main"</tag> vorgenommen. Zum Beispiel:</para>
             <programlisting language="xml" xml:space="preserve">&lt;title type="main">Carta de consulta al Ayuntamiento
                de La Habana&lt;/title></programlisting>
-         <para>Nach dem Haupttitel wird optional der Titel in einer anderen Sprache, mit der Originalschreibweise, ein Alternativtitel oder ein Untertitel eingefügt. Zu diesem Zweck kann das Element <tag>title</tag> unterhalb des Haupttitels zusammen mit dem Attribut <tag>@type="sub"</tag> wiederholt werden:</para>
+         <para>Nach dem Haupttitel wird optional der Titel in einer anderen Sprache, in der Originalschreibweise, ein Alternativtitel oder ein Untertitel eingefügt. Zu diesem Zweck kann das Element <tag>title</tag> unterhalb des Haupttitels zusammen mit dem Attribut <tag>@type="sub"</tag> wiederholt werden:</para>
             <programlisting language="xml" xml:space="preserve">&lt;title type="main"&gt;Carta de Francisco de Arango y Parreño
    a Alexander von Humboldt&lt;/title&gt;
 &lt;title type="sub" xml:lang="fr"&gt;À Monsieur Mr. le Baron
    A. Humboldt&lt;/title&gt;       </programlisting>
-         <para>Das Attribut <tag>@xml:lang</tag> wurde optional mit einem Standardcode verwendet, um die Sprache des alternativen Titels anzugeben: "es" für Spanisch, "fr" für Englisch, "fr" für Französisch. standard code to indicate the language of the alternative title: "es" für Spanisch, "fr" für Französisch, "de" für Deutsch, "en" für Englisch usw. für Französisch, "de" für Deutsch, "en" für Englisch usw.</para>
+         <para>Das Attribut <tag>@xml:lang</tag> wurde optional mit einem Standardcode verwendet, um die Sprache des alternativen Titels anzugeben: "es" für Spanisch, "fr" für Englisch, "fr" für Französisch.</para>
       </section>
       <section>
          <title>Redakteure und Mitarbeiter</title>
          <para>In <tag>titleStmt</tag> wurden die Redakteure mit dem Element <tag>editor</tag> identifiziert. Der Name der Person wurde mit dem Element <tag>persName</tag> wie folgt kodiert:</para>
          <itemizedlist>
             <listitem>
-               <para>Nachname: <tag>Nachname</tag>       </para>
+               <para>Nachname: <tag>surname</tag>       </para>
             </listitem>
             <listitem>
-               <para>Vorname: <tag>vorname</tag>      </para>
+               <para>Vorname: <tag>forename</tag>      </para>
             </listitem>
          </itemizedlist>
          <para>Eine externe Datenbank in Form einer URL, z. B. VIAF oder ORCID, wurde optional im <tag>@ref-Attribut</tag> kodiert.</para>
@@ -184,7 +184,7 @@
      &lt;forename>[Forename]&lt;/forename>
    &lt;/persName>
 &lt;/editor>    </programlisting>
-         <para>Wenn es mehr als einen Bearbeiter gibt, wurde das <tag>Bearbeiterelement</tag> wiederholt, zum Beispiel: </para>
+         <para>Wenn es mehr als einen Bearbeiter gibt, wurde das Element <tag>editor</tag> wiederholt, zum Beispiel: </para>
             <programlisting language="xml" xml:space="preserve">&lt;editor&gt;
                     &lt;persName&gt;
                         &lt;surname&gt;Tylus&lt;/surname&gt;
@@ -197,22 +197,22 @@
                         &lt;forename&gt;Kathrin&lt;/forename&gt;
                     &lt;/persName&gt;
                 &lt;/editor&gt;</programlisting>
-         <para>Wenn andere Personen mit kleineren Aufgaben an der Ausgabe beteiligt waren, wurde der Name der Mitwirkenden in das Element <tag>respStmt</tag> (Verantwortlichkeitserklärung) aufgenommen. Auch hier wurde der Name der Person in das Element <tag>persName</tag> eingefügt. Im Attribut <tag>@ref</tag> wurde der Verweis auf eine externe Datenbank wie VIAF oder ORCID ebenfalls optional in Form einer URL kodiert.</para>
-         <para>Die Art der Zusammenarbeit wurde mit dem Element <tag>resp</tag>(responsibility) detailliert definiert. In einem <tag>Notiz-Element</tag> wurde die Art des Beitrags mit den folgenden Werten definiert: Zusammenarbeit, redaktionelle Zusammenarbeit, Transkription, Kommentar oder Aufzeichnungen. Zum Beispiel:</para>
+         <para>Wenn andere Personen mit kleineren Aufgaben an der Ausgabe beteiligt waren, wurde der Name der Mitwirkenden in das Element <tag>respStmt</tag> (statement of responsibility) aufgenommen. Auch hier wurde der Name der Person in das Element <tag>persName</tag> eingefügt. Im Attribut <tag>@ref</tag> wurde der Verweis auf eine externe Datenbank wie VIAF oder ORCID ebenfalls optional in Form einer URL kodiert.</para>
+         <para>Die Art der Zusammenarbeit wurde mit dem Element <tag>resp</tag> (responsibility) detailliert definiert. In einem <tag>note</tag>-Element wurde die Art des Beitrags mit den folgenden Werten definiert: Zusammenarbeit, redaktionelle Zusammenarbeit, Transkription, Kommentar oder Indizierung. Zum Beispiel:</para>
             <programlisting language="xml" xml:space="preserve">&lt;respStmt>
    &lt;persName ref="http://viaf.org/viaf/21973914">
       &lt;surname>[Apellido]&lt;/surname>
       &lt;forename>[Nombre]&lt;/forename>
    &lt;/persName>
    &lt;resp>
-      &lt;note type="remarkResponsibility">Collaboration&lt;/note>
+      &lt;note type="remarkResponsibility">Zusammenarbeit&lt;/note>
    &lt;/resp>
 &lt;/respStmt></programlisting>
       </section>
       <section>
          <title>Finanzierung</title>
          <para>Nach dem Namen des Herausgebers werden die drei Förderer genannt: Auswärtiges Amt, Fritz Thyssen Stiftung und Gerda Henkel Stiftung.</para>
-         <para>In <tag>titleStmt</tag> wurde das Element funder wie folgt verwendet: </para>
+         <para>In <tag>titleStmt</tag> wurde das Element <tag>funder</tag> wie folgt verwendet: </para>
             <programlisting language="xml" xml:space="preserve">&lt;funder ref="https://www.auswaertiges-amt.de/de/">
    Auswärtiges Amt
 &lt;/funder>
@@ -238,7 +238,7 @@
          <para>Zu diesem Zweck wurde das Element <tag>publicationStmt</tag> verwendet. Innerhalb dieses Elements wurden drei verschachtelte Elemente verwendet:<itemizedlist>
                <listitem>
                   <para>
-                    <tag>publisher</tag> (veröffentlichende Entität), </para>
+                    <tag>publisher</tag> (veröffentlichende Einrichtung), </para>
                </listitem>
                <listitem>
                   <para>
@@ -263,13 +263,13 @@
       4.0 Internacional (CC BY 4.0) &lt;/licence&gt;
    &lt;/availability&gt;
 &lt;/publicationStmt&gt;</programlisting>
-         <para>Optional wurden die Informationen über die für die Veröffentlichung verantwortliche Stelle mit dem <tag>ref-Element</tag> angereichert, um einen Hyperlink zur Website mit dem <tag>@target-Attribut</tag> bereitzustellen. Optional wurde auch das <tag>@ref-Attribut</tag> im <tag>pubPlace-Element</tag> verwendet, um den Ort der Veröffentlichung mit einer URI von GeoNames zu identifizieren. </para>
-         <para>Die Elemente <tag>publisher</tag> und <tag>pubPlace</tag> sind wiederholbar, d. h. es ist möglich, mehr als eine Entität und einen Veröffentlichungsort anzugeben, aber die Informationen über die Verfügbarkeit der Datei sind nicht wiederholbar. So enthält das <tag>availability-Element</tag>mit dem Attribut <tag>@status="free"</tag> ein <tag>licence-Element</tag>mit Informationen über die Lizenz der digitalen Ausgabe; das Attribut <tag>@target</tag> wurde verwendet, um die URL der Lizenz anzugeben.</para>
+         <para>Optional wurden die Informationen über die veröffentlichende Einrichtung mit dem <tag>ref-Element</tag> angereichert, um einen Hyperlink zur Website mit dem <tag>@target-Attribut</tag> bereitzustellen. Optional wurde auch das <tag>@ref-Attribut</tag> im <tag>pubPlace-Element</tag> verwendet, um den Ort der Veröffentlichung mit einer URI von GeoNames zu identifizieren. </para>
+         <para>Die Elemente <tag>publisher</tag> und <tag>pubPlace</tag> sind wiederholbar, d. h. es ist möglich, mehr als eine Entität und einen Veröffentlichungsort anzugeben, aber die Informationen über die Verfügbarkeit der Datei sind nicht wiederholbar. So enthält das <tag>availability-Element</tag>mit dem Attribut <tag>@status="free"</tag> ein <tag>licence</tag>-Element mit Informationen über die Lizenz der digitalen Ausgabe; das Attribut <tag>@target</tag> wurde verwendet, um die URL der Lizenz anzugeben.</para>
          <para>In allen Ausgaben des Projekts wurde die Lizenz "Creative Commons Atribución 4.0 Internacional (CC BY 4.0)" verwendet.</para>
       </section>
       <section>
          <title>Textuelle Quelle</title>
-         <para>In allen Ausgaben des Projekts sind die Quelle, aus der der Text stammt, der Name der Institution, in der das Dokument aufbewahrt wird, und mindestens ein Identifikator wie eine Signatur verschlüsselt worden.</para>
+         <para>In allen Ausgaben des Projekts wurde die Quelle, aus der der Text stammt, der Name der Institution, in der das Dokument aufbewahrt wird, und mindestens ein Identifikator wie eine Signatur dokumentiert.</para>
          <para>Die Quellenbeschreibung wurde mit dem Element <tag>msDesc</tag> (manuscript description) kodiert. Darin wurde das Element <tag>msIdentifier</tag> verwendet, um Informationen über die Institution, die das Dokument besitzt, mit dem Element <tag>institution</tag> und die Signatur mit dem Element <tag>idno</tag> bereitzustellen, das das Attribut <tag>@type</tag> mit dem Wert <tag>shelfmark</tag> enthält. Dieses<tag> idno-Element</tag> wurde innerhalb eines anderen <tag>idno-Elements</tag> kodiert, um so viele idno-Elemente wie nötig zu wiederholen. Optional wurden Informationen über die Sammlung mit dem <tag>collection-Element</tag> und dem Namen oder Titel der Quelle, wie er im Dokument erscheint, mit dem <tag>msName-Element</tag> eingefügt, zum Beispiel:</para>
             <programlisting language="xml" xml:space="preserve">&lt;msDesc type="copy"&gt;
    &lt;msIdentifier&gt;
@@ -284,7 +284,7 @@
          <tip>
                 <para>Es ist wichtig, den Namen oder Titel der in <tag>msName</tag> kodierten Quelle nicht mit dem Titel der digitalen Ausgabe zu verwechseln, der unterschiedlich sein kann.</para>
             </tip>
-         <para>Wenn es sich bei der Quelle, aus der der Text stammt, um ein gedrucktes Dokument handelt oder eine gedruckte Ausgabe konsultiert wurde, wurden die Informationen in <tag>listWit</tag> in <tag>witness</tag>kodiert. Darin wurde ein <tag>bibl-Element</tag> verwendet, um eine bibliografische Referenz zu kodieren, wobei das Attribut <tag>@type</tag> mit dem Wert print verwendet wurde, um es von einem Manuskript zu unterscheiden. </para>
+         <para>Wenn es sich bei der Quelle, aus der der Text stammt, um ein gedrucktes Dokument handelt oder eine gedruckte Ausgabe konsultiert wurde, wurden die Informationen in <tag>listWit</tag> in <tag>witness</tag> kodiert. Darin wurde ein <tag>bibl-Element</tag> verwendet, um eine bibliografische Referenz zu kodieren, wobei das Attribut <tag>@type</tag> mit dem Wert print verwendet wurde, um es von einem Manuskript zu unterscheiden. </para>
          <para>Zum Beispiel:</para>
             <programlisting language="xml" xml:space="preserve">&lt;witness>
    &lt;bibl type="print">Humboldt, Alexander von: Geografía de la plantas,
@@ -293,7 +293,7 @@
 &lt;/witness>   </programlisting>
          <section>
             <title>URI-Bezeichner des bibliografischen Eintrags</title>
-            <para>Dokumentquellen werden traditionell durch eine Signatur oder eine andere Art von Kennung identifiziert. Da die Signatur nur teilweise maschinell identifiziert werden kann, wurde, wann immer möglich, ein URI<tag>(Uniform Resource Identifier</tag>) hinzugefügt, sofern bekannt oder verfügbar. Der Identifikator ist standardisiert und maschinenlesbar, da er nur aus bestimmten Zeichen und Symbolen besteht (Leerzeichen sind z. B. nicht erlaubt).</para>
+            <para>Dokumentquellen werden traditionell durch eine Signatur oder eine andere Art von Kennung identifiziert. Da die Signatur nur teilweise maschinell identifiziert werden kann, wurde, wann immer möglich, ein <tag>URI</tag> (Uniform Resource Identifier) hinzugefügt, sofern bekannt oder verfügbar. Der Identifikator ist standardisiert und maschinenlesbar, da er nur aus bestimmten Zeichen und Symbolen besteht (Leerzeichen sind z. B. nicht erlaubt).</para>
             <para>Wo immer es möglich war, wurde eine URI verwendet, um den bearbeiteten Text mit dem bibliografischen Eintrag im digitalen Repository des Projekts zu verknüpfen. </para>
             <informaltable>
                <thead>
@@ -302,7 +302,7 @@
                         <para>Element</para>
                      </td>
                      <td>
-                        <para>Einführungsstelle</para>
+                        <para>Hierarchie</para>
                      </td>
                      <td>
                         <para>Attribut</para>
@@ -316,12 +316,12 @@
                   <tr>
                      <td>
                         <para>
-                           <tag>keine Ahnung</tag>
+                           <tag>idno</tag>
                         </para>
                      </td>
                      <td>
                         <para>
-                           <tag>//msIdentifier/idno/idno</tag>
+                           //msIdentifier/idno/idno
                         </para>
                      </td>
                      <td>
@@ -335,7 +335,7 @@
                   </tr>
                </tbody>
             </informaltable>
-            <para>Das <tag>idno-Element</tag> wurde als Teil des msIdentifier-Elements und als untergeordnetes Element einer anderen idno unter Verwendung des <tag>@type-Attributs</tag> mit dem Wert "uri" für Permalinks oder "URLImages" für Faksimiles verwendet. Zum Beispiel: </para>
+            <para>Das <tag>idno-Element</tag> wurde als Teil des <tag>msIdentifier</tag>-Elements und als untergeordnetes Element einer anderen <tag>idno</tag> unter Verwendung des <tag>@type</tag>-Attributs mit dem Wert "uri" für Permalinks oder "URLImages" für Faksimiles verwendet. Zum Beispiel: </para>
                <programlisting language="xml" xml:space="preserve">&lt;idno>
    &lt;idno type="shelfmark">Caja pequeña 7b, no. 68&lt;/idno>
    &lt;idno type="uri">http://kalliope-verbund.info/DE-611-HS-1272345&lt;/idno>
@@ -351,16 +351,16 @@
                   <para>Manuskript</para>
                </listitem>
                <listitem>
-                  <para>Kopieren</para>
+                  <para>Kopie</para>
                </listitem>
                <listitem>
                   <para>Entwurf</para>
                </listitem>
                <listitem>
-                  <para>Drucken</para>
+                  <para>Druck</para>
                </listitem>
             </itemizedlist>
-            <para>Wo mehr als eine Textquelle verwendet wird, wurde ein <emphasis role="bold">einziges Dokument</emphasis>als Textgrundlage ausgewählt. Die anderen Textzeugen wurden in der Ausgabe nur dann ausdrücklich erwähnt, wenn sie durch einen redaktionellen Kommentar Varianten vermitteln. </para>
+            <para>Wo mehr als eine Textquelle verwendet wird, wurde ein <emphasis role="bold">einziges Dokument</emphasis> als Textgrundlage ausgewählt. Die anderen Textzeugen wurden in der Ausgabe nur dann ausdrücklich erwähnt, wenn sie durch einen redaktionellen Kommentar Varianten vermitteln. </para>
             <para>Wenn das Vorhandensein und der Inhalt eines Dokuments mit Hilfe anderer Dokumente abgeleitet wurde, gibt es keine textuelle Grundlage. In diesem Fall wurde im <tag>msDesc-Element</tag> die Art der Textquelle mit dem Attribut <tag>@rend</tag> kodiert. Zu diesem Zweck wurden die folgenden Werte gewählt: </para>
             <informaltable>
                <thead>
@@ -376,11 +376,11 @@
                <tbody>
                   <tr>
                      <td>
-                        <para>Ausführlich</para>
+                        <para>Erschlossen</para>
                      </td>
                      <td>
                         <para>
-                           <tag>notExtant</tag>
+                           "notExtant"
                         </para>
                      </td>
                   </tr>
@@ -390,7 +390,7 @@
                      </td>
                      <td>
                         <para>
-                           <tag>Konzept</tag>
+                           "concept"
                         </para>
                      </td>
                   </tr>
@@ -400,27 +400,27 @@
                      </td>
                      <td>
                         <para>
-                           <tag>Manuskript</tag>
+                           "manuscript"
                         </para>
                      </td>
                   </tr>
                   <tr>
                      <td>
-                        <para>Kopieren</para>
+                        <para>Abschrift</para>
                      </td>
                      <td>
                         <para>
-                           <tag>kopieren.</tag>
+                           "copy"
                         </para>
                      </td>
                   </tr>
                   <tr>
                      <td>
-                        <para>Drucken</para>
+                        <para>Druck</para>
                      </td>
                      <td>
                         <para>
-                           <tag>drucken</tag>
+                           "drucken"
                         </para>
                      </td>
                   </tr>
@@ -433,7 +433,7 @@
       <section>
          <title>Beschreibung des Dokuments</title>
          <para>Optional werden die physischen Merkmale (Papier, Format, Seitenzahl usw.) der Textquelle, aus der die Ausgabe stammt, beschrieben.</para>
-         <para>Die Beschreibung des Dokuments wurde mit dem Element <tag>physDesc</tag>(physical description) kodiert. Die Beschreibung wurde als Text in einem <tag>p-Element</tag> bereitgestellt:</para>
+         <para>Die Beschreibung des Dokuments wurde mit dem Element <tag>physDesc</tag> (physical description) kodiert. Die Beschreibung wurde als Text in einem <tag>p-Element</tag> bereitgestellt:</para>
             <programlisting language="xml" xml:space="preserve">&lt;physDesc&gt;
    &lt;p&gt;Manuscrito autógrafo de autor desconocido en buen estado
    de conservación y de seis páginas de extensión. Forma parte del
@@ -447,7 +447,7 @@
       </section>
       <section>
          <title>Autor</title>
-         <para>Wenn der Autor des Textes bekannt ist, wurde diese Information im <tag>profileDesc-Element</tag> kodiert. Dort wurde ein <tag>creation-Element</tag> erstellt, in dem die Informationen über die Erstellung kodiert wurden: Autor, Ort der Erstellung und Datum der Erstellung. </para>
+         <para>Wenn der Autor des Textes bekannt ist, wurde diese Information im Element <tag>profileDesc</tag> kodiert. Dort wurde ein <tag>creation</tag>-Element erstellt, in dem die Informationen über die Erstellung kodiert wurden: Autor, Ort der Erstellung und Datum der Erstellung. </para>
          <para>Der Name des Autors wurde mit dem Element <tag>persName</tag> kodiert. Zum Beispiel:</para>
             <programlisting language="xml" xml:space="preserve">&lt;profileDesc>
    &lt;creation>
@@ -455,7 +455,7 @@
    &lt;/creation>
 &lt;/profileDesc></programlisting>
          <para>Es wurde immer die folgende Reihenfolge eingehalten: zuerst der Nachname und dann der Vorname, getrennt durch ein Komma. Wenn das Geburts- und Sterbedatum bekannt ist, wurde es gefolgt vom Vornamen und in Klammern angegeben, wie im obigen Beispiel. </para>
-         <para>Wenn der Autor unbekannt ist, wird das gleiche <tag>persName-Element</tag> verwendet, jedoch mit dem Inhalt "N/A" (Not Available). Zum Beispiel:</para>
+         <para>Wenn der Autor unbekannt ist, wird das gleiche <tag>persName</tag>-Element verwendet, jedoch mit dem Inhalt "N/A" (Not Available, Not Applicable, No Answer). Zum Beispiel:</para>
             <programlisting language="xml" xml:space="preserve">&lt;creation>
    &lt;persName>N/A&lt;/persName>
    &lt;persName key="H0012069">Humboldt, Alexander von (1769-1859)&lt;/persName>
@@ -466,7 +466,7 @@
       </section>
       <section>
          <title>Ort der Erstellung</title>
-         <para>Wenn der Erstellungsort bekannt ist, wurde er auch im <tag>profileDesc-Element</tag> kodiert. Bei der <tag>Erstellung</tag> wurde ein <tag>placeName</tag>verwendet, um den Namen des Ortes zu kodieren. Optional wurde ein Attribut <tag>@key</tag>verwendet, um einen externen Bezeichner von Geonames bereitzustellen. Zum Beispiel:</para>
+         <para>Wenn der Erstellungsort bekannt ist, wurde er auch im <tag>profileDesc</tag>-Element mit <tag>placeName</tag> kodiert, um den Namen des Ortes zu dokumentieren. Optional wurde ein Attribut <tag>@key</tag> verwendet, um eine externe Referenz von Geonames bereitzustellen. Zum Beispiel:</para>
             <programlisting language="xml" xml:space="preserve">&lt;placeName key="https://www.geonames.org/3553478"&gt;La Habana&lt;/placeName&gt;      </programlisting>
          <para>Wenn der Ort unbekannt ist, sollte der Inhalt von <tag>placeName</tag> "N/A" (Not
             Available) sein. Zum Beispiel:
@@ -477,12 +477,13 @@
       </section>
       <section>
          <title>Datum der Erstellung</title>
-         <para>Wenn das Erstellungsdatum bekannt ist, wurde es mit dem <tag>Datumselement</tag>
+         <para>Wenn das Erstellungsdatum bekannt ist, wurde es mit dem Element <tag>date</tag>
             unter Einhaltung des Formats JJJJ-MM-TT (oder JJJJ-MM oder JJJJ, je nach den verfügbaren
             Informationen) und unter Verwendung der Attribute <tag>@when</tag>, <tag>@from/@to</tag>
             oder <tag>@notBefore/@notAfter</tag> kodiert. So kann die Webanwendung diese Daten
             nutzen, um nach Informationen in einem bestimmten Zeitraum zu suchen oder Dokumente auf
-            der Grundlage des standardisierten Datums zu filtern. <itemizedlist>
+            der Grundlage des standardisierten Datums zu filtern.</para> 
+         <itemizedlist>
                <listitem>
                   <para>Genaues Datum:</para>
                </listitem>
@@ -501,34 +502,32 @@
                   <para>Ungefähre Zeitspanne:</para>
                </listitem>
             </itemizedlist>
-         </para>
-
             <programlisting language="xml" xml:space="preserve">&lt;date notBefore="1804-05-01" notAfter="1804-05-16">Primera mitad
    de mayo de 1804&lt;/date>    </programlisting>
          <para>Darüber hinaus wurde optional das Attribut <tag>@cert</tag> mit den Werten <tag>hoch</tag> und <tag>niedrig</tag> verwendet, um die Sicherheit zu kodieren, mit der das Datum als korrekt bekannt ist.</para>
          <para>Wenn das Erstellungsdatum nicht bekannt ist, wird auch das <tag>Datumselement</tag>
-            verwendet, allerdings mit dem Wert "N/A" (Not available). Zum Beispiel:
+            verwendet, allerdings mit dem Wert "N/A" (Not available). Zum Beispiel:</para>
             <programlisting language="xml" xml:space="preserve">&lt;persName key="H0012682"&gt;Arango y Parreño, Francisco de (1765-1837)&lt;/persName&gt;
    &lt;date&gt;N/A&lt;/date&gt;
-&lt;placeName key="H0006819"&gt;La Habana&lt;/placeName&gt;</programlisting></para>
+&lt;placeName key="H0006819"&gt;La Habana&lt;/placeName&gt;</programlisting>
       </section>
       <section>
          <title>Sprache</title>
-         <para>In allen Ausgaben des Projekts wurde die Hauptsprache des Textes kodiert. In <tag>profileDesc</tag> wurde das <tag>langUsage-Element</tag> verwendet. Dort wurde das Element <tag>language</tag> verschachtelt, um die Sprache zu kodieren. Zum Beispiel:</para>
+         <para>In allen Ausgaben des Projekts wurde die Hauptsprache des Textes kodiert. In <tag>profileDesc</tag> wurde das Element <tag>langUsage</tag> verwendet. Dort wurde das Element <tag>language</tag> verschachtelt, um die Sprache zu kodieren. Zum Beispiel:</para>
             <programlisting language="xml" xml:space="preserve">&lt;langUsage>
    &lt;language ident="es">Español&lt;/language>
 &lt;/langUsage></programlisting>
          <para>Das Attribut <tag>@ident</tag> wurde verwendet, um die Sprache mit einem standardisierten Code zu kennzeichnen: "es" für Spanisch, "de" für Deutsch, "en" für Englisch, "fr" für Französisch, usw.</para>
-         <para>Wenn der Text wesentliche Teile in einer anderen Sprache enthält, wurde ein <tag>Sprachelement</tag>wiederholt, um die zweite Sprache zu kodieren. Zum Beispiel:</para>
+         <para>Wenn der Text wesentliche Teile in einer anderen Sprache enthält, wurde ein <tag>language</tag>-Element wiederholt, um die zweite Sprache zu kodieren. Zum Beispiel:</para>
             <programlisting language="xml" xml:space="preserve">&lt;langUsage&gt;
      &lt;language ident="es"&gt;Español&lt;/language&gt;
      &lt;language ident="fr"&gt;Francés&lt;/language&gt;
 &lt;/langUsage&gt;</programlisting>
       </section>
       <section>
-         <title>Abstrakt</title>
-         <para>In allen Ausgaben des Projekts wurde eine Zusammenfassung des intellektuellen Inhalts des Textes, der Themen, der diskutierten Ideen usw. gegeben.</para>
-         <para>Die Zusammenfassung wurde mit <tag>profileDesc/abstract</tag> in einem <tag>p-Element</tag>wie folgt kodiert:</para>
+         <title>Zusammenfassung</title>
+         <para>In allen edierten Texten des Projekts wurde eine Zusammenfassung des intellektuellen Inhalts des Textes, der Themen, der diskutierten Ideen usw. gegeben.</para>
+         <para>Die Zusammenfassung wurde in <tag>profileDesc/abstract</tag> in einem <tag>p</tag>-Element wie folgt kodiert:</para>
             <programlisting language="xml" xml:space="preserve">&lt;abstract xml:lang="es"&gt;
    &lt;p&gt;Notas de Humboldt sobre la obra de
    Jean Nicolas Berthe "Précis Historique
@@ -537,11 +536,11 @@
    preparación de su tratado científico sobre la fiebre amarilla.
    La obra de Berthe fue publicada en 1802.&lt;/p&gt;
 &lt;/abstract&gt; </programlisting>
-         <para>Die Zusammenfassung wurde in Spanisch und Deutsch verfasst. Das <tag>abstract-Element</tag> wurde wiederholt und das <tag>@xml:lang-Attribut</tag> wurde mit einem standardisierten zweistelligen Code verwendet: "es" für Spanisch und "de" für Deutsch.</para>
+         <para>Die Zusammenfassung wurde in Spanisch und Deutsch verfasst. Das <tag>abstract</tag>-Element wurde wiederholt und das <tag>@xml:lang</tag>-Attribut wurde mit einem standardisierten zweistelligen Code verwendet: "es" für Spanisch und "de" für Deutsch.</para>
       </section>
       <section>
          <title>Kategorien</title>
-         <para>In <tag>profileDesc</tag> wurde das <tag>textClass-Element</tag> verwendet, um verschiedene Kategorien zur Klassifizierung des bearbeiteten Textes aufzunehmen. Die verwendeten Kategorien sind: Genre, Form und Thema(n). Hierfür wurde das Element <tag>catRef</tag> mit den Attributen <tag>@scheme</tag> und <tag>@target</tag> verwendet. Zum Beispiel: </para>
+         <para>In <tag>profileDesc</tag> wurde das Element <tag>textClass</tag> verwendet, um verschiedene Kategorien zur Klassifizierung des bearbeiteten Textes aufzunehmen. Die verwendeten Kategorien sind: Genre, Form und Thema(n). Hierfür wurde das Element <tag>catRef</tag> mit den Attributen <tag>@scheme</tag> und <tag>@target</tag> verwendet. Zum Beispiel: </para>
             <programlisting language="xml" xml:space="preserve">&lt;textClass>
    &lt;catRef scheme="#genre" target="#notebooks"/>
    &lt;catRef scheme="#form" target="#manuscript"/>
@@ -549,10 +548,12 @@
    &lt;catRef scheme="#subject" target="#geography"/>
    &lt;catRef scheme="#subject" target="#sugar"/>
 &lt;/textClass></programlisting>
-         <para>Die drei Kategorien sind wiederholbar und optional. Alle Kategorien wurden zuvor in der Projekttaxonomie definiert, die sich im <tag>Taxonomie-Element</tag> befindet. </para>
+         <para>Die drei Kategorien sind wiederholbar und optional. Alle Kategorien wurden zuvor in der Projekttaxonomie definiert, die sich im <tag>taxonomy</tag>-Element befindet. </para>
          <para>Soweit möglich, wurden Begriffe aus der Library of Congress und anderen Nationalbibliotheken wie der Deutschen Nationalbibliothek und der Biblioteca Nacional de España verwendet. </para>
       </section>
    </section>
+<!-- TK revisión hasta aquí, -->
+   
    <section xml:id="texto">
       <title>Text</title>
       <para>Die im Rahmen des Projekts bearbeiteten Texte wurden strukturell kodiert. Alle Absätze, Zeilenumbrüche, Listen, Tabellen, Notizen und Zeichnungen wurden explizit mit TEI-Elementen dargestellt. Weitere explizit kodierte Textphänomene sind: die Paginierung oder Foliierung der Quelle, einschließlich leerer Seiten, und Veränderungen in der Typografie wie Hervorhebungen, vom Autor belassene Leerzeichen, Eingriffe des Autors wie Streichungen, Ergänzungen und Ersetzungen sowie redaktionelle Eingriffe wie Normalisierungen, Auflösung von Abkürzungen, gelieferte Wörter, Korrekturen offensichtlicher Fehler, unsichere Lesarten, Auslassungen und Wörter in einer anderen Sprache.</para>
