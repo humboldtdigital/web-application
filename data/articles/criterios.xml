@@ -552,21 +552,20 @@
          <para>Soweit möglich, wurden Begriffe aus der Library of Congress und anderen Nationalbibliotheken wie der Deutschen Nationalbibliothek und der Biblioteca Nacional de España verwendet. </para>
       </section>
    </section>
-<!-- TK revisión hasta aquí, -->
-   
+  
    <section xml:id="texto">
       <title>Text</title>
-      <para>Die im Rahmen des Projekts bearbeiteten Texte wurden strukturell kodiert. Alle Absätze, Zeilenumbrüche, Listen, Tabellen, Notizen und Zeichnungen wurden explizit mit TEI-Elementen dargestellt. Weitere explizit kodierte Textphänomene sind: die Paginierung oder Foliierung der Quelle, einschließlich leerer Seiten, und Veränderungen in der Typografie wie Hervorhebungen, vom Autor belassene Leerzeichen, Eingriffe des Autors wie Streichungen, Ergänzungen und Ersetzungen sowie redaktionelle Eingriffe wie Normalisierungen, Auflösung von Abkürzungen, gelieferte Wörter, Korrekturen offensichtlicher Fehler, unsichere Lesarten, Auslassungen und Wörter in einer anderen Sprache.</para>
+      <para>Die im Rahmen des Projekts bearbeiteten Texte wurden strukturell kodiert. Alle Absätze, Zeilenumbrüche, Listen, Tabellen, Notizen und Zeichnungen wurden explizit mit TEI-Elementen dargestellt. Weitere explizit kodierte Textphänomene sind: die Paginierung oder Foliierung der Quelle, einschließlich leerer Seiten, und Veränderungen in der Typografie wie Hervorhebungen, vom Autor belassene Leerstellen, Eingriffe des Autors wie Streichungen, Ergänzungen und Ersetzungen sowie redaktionelle Eingriffe wie Normalisierungen, Auflösung von Abkürzungen, ergänzte Wörter oder Satzzeichen, Korrekturen offensichtlicher Fehler, unsichere Lesarten, Auslassungen und Wörter in einer anderen Sprache.</para>
       <section xml:id="estructuras-textuales">
-         <title>Textliche Struktur</title>
+         <title>Textstrukturen</title>
          <section>
             <title>Foliierung und Paginierung</title>
             <para>In allen Ausgaben des Projekts wurde der Beginn der Foliierung oder Paginierung, d. h. die Stelle, an der ein neues Folio oder eine neue Seite beginnt, kodiert.</para>
-            <para>Der Anfang des Folios oder der Seite wurde immer mit dem leeren Element <tag>pb/</tag> (Seitenumbruch) kodiert. Das Attribut <tag>@n</tag> enthält die Seiten- oder Folionummer (je nach der physischen Reihenfolge des Dokuments oder des Autors). </para>
+            <para>Der Anfang des Folios oder der Seite wurde immer mit dem leeren Element <tag>pb/</tag> (pagebreak) kodiert. Das Attribut <tag>@n</tag> enthält die Seiten- oder Folionummer (je nach der physischen Reihenfolge des Dokuments oder des Autors). </para>
                <programlisting language="xml" xml:space="preserve">distinta de las demás&lt;pb n="3v"/&gt;colonias del continente Americano</programlisting>
-            <para>Die Digitalisierung des Blattes oder der Seite wurde mit dem Attribut <tag>@facs</tag> (Faksimile) kodiert. Der Dateiname der digitalen Bilddatei wurde mit der archivischen Foliierung und der Erweiterung "tif" kodiert. Der Dateiname entspricht einem URI, d. h. er ist im digitalen Dossier eindeutig. Zum Beispiel:</para>
+            <para>Die Digitalisierung des Blattes oder der Seite wurde mit dem Attribut <tag>@facs</tag> (facsimile) kodiert. Der Dateiname der digitalen Bilddatei wurde mit der archivalischen Foliierung und der Erweiterung "tif" kodiert. Der Dateiname entspricht einem URI, d. h. er ist im digitalen Dossier eindeutig. Zum Beispiel:</para>
                <programlisting language="xml" xml:space="preserve">&lt;pb n="1r" facs="prohd0014_1r.tif"/&gt;</programlisting>
-            <para>Alle anderen in der Quelle enthaltenen Nummerierungs- oder Paginierungsinformationen wurden mit dem Element <tag>fw</tag> (forme work) kodiert; dieses Element trägt das Attribut <tag>@type</tag> mit dem Wert <tag>folNum</tag>:</para>
+            <para>Alle anderen in der Quelle enthaltenen Nummerierungs- oder Paginierungsinformationen wurden mit dem Element <tag>fw</tag> (forme work) kodiert; dieses Element trägt das Attribut <tag>@type</tag> mit dem Wert "folNum":</para>
                <programlisting language="xml" xml:space="preserve">&lt;fw type="folNum"&gt;34&lt;/fw&gt;</programlisting>
          </section>
          <section>
@@ -578,35 +577,38 @@
       &lt;div>[Sección o apartado 2]&lt;/div>
    &lt;/div>
 &lt;/tex></programlisting>
-            <para>Diese interne Struktur wurde immer in Verbindung mit einer Paginierung oder Foliierung mit <tag>pb</tag> und der Verwendung von <tag>p</tag> kodiert.</para>
+            <para>Diese interne Struktur wurde immer in Verbindung mit einer Paginierung oder Foliierung mit <tag>pb</tag> und dem Absatz-Element <tag>p</tag> kodiert.</para>
             <para>Optional können in Dokumenten wie Protokollen auch Abschnittsüberschriften mit dem Element <tag>head</tag> kodiert werden.</para>
          </section>
          <section>
             <title>Leere Seiten</title>
             <para>In allen Editionen des Projekts wurden die Leerseiten der Textquelle kodiert. Darüber hinaus wurde zwischen Leerseiten, fehlenden Seiten, semantisch bedeutsamen Leerstellen und Auslassungen durch die Herausgeber unterschieden.</para>
             <para>Um die Foliierung korrekt darstellen und anzeigen zu können, wurde jede (leere) Seite einzeln kodiert. Auch bei einer Abfolge von Leerseiten wurde für jede neu kodierte Leerseite immer eine Nummer <tag>1</tag> eingetragen.</para>
-            <para>Leere Seiten wurden mit dem Element (leer) <tag>gap/</tag> kodiert. Dieses wurde direkt nach dem obigen Seitenumbruch<tag>(pb/</tag>) verwendet. Die beiden Attribute <tag>@unit</tag> und <tag>@quantity </tag>des <tag>gap/-Elements</tag> tragen die Werte <tag>pages</tag> und <tag>1</tag>. Das Attribut <tag>@reason</tag> enthält den Wert <tag>empty</tag>. Wenn es mehr als eine leere Seite in einer Zeile gibt, wurde jede Seite einzeln kodiert. </para>
-               <programlisting language="xml" xml:space="preserve">&lt;pb n="132v"/&gt;&lt;gap unit="pages" quantity="1" reason="empty"/&gt;</programlisting>
+           <para>Leere Seiten wurden mit dem (leeren) Element <tag>gap/</tag> kodiert.</para> 
+          <programlisting language="xml" xml:space="preserve">&lt;pb n="132v"/&gt;&lt;gap unit="pages" quantity="1" reason="empty"/&gt;</programlisting>
+          <para>Dieses wurde direkt nach dem Seitenumbruch (<tag>pb/</tag>) verwendet. Die beiden Attribute <tag>@unit</tag> und <tag>@quantity</tag> des <tag>gap/</tag>-Elements sind spezifiziert durch die Werte "pages" und "1". Das Attribut <tag>@reason</tag> enthält den Wert "empty". Folgen mehrere leere Seiten aufeinander, wurde jede Seite einzeln kodiert.</para>
          </section>
          <section>
-            <title>Paragraphen</title>
+            <title>Absätze</title>
             <para>In allen Ausgaben des Projekts wurden die Absätze entsprechend der Reihenfolge der Textquelle kodiert. Die Einrückung von Absätzen wurde optional kodiert, wenn der Redakteur diese Information für relevant hält.</para>
             <para>Die Absätze wurden mit dem Element <tag>p</tag> (paragraph) kodiert.</para>
          </section>
          <section>
-            <title>Anfänge der Linie </title>
-            <para>Zeilenanfänge wurden explizit im Anschluss an die Textquelle mit einem (leeren) <tag>lb/-Element</tag> (Zeilenanfang) kodiert. Das <tag>lb/-Element</tag> wurde gemäß den TEI-Richtlinien am <emphasis role="bold">Anfang</emphasis> der Zeile verwendet. </para>
-            <para>Wenn eine Zeile innerhalb eines Wortes beginnt, wurde sie mit dem Attribut <tag>@break</tag>und dem Wert <tag>no</tag> kodiert. Wenn in der Originalquelle ein Trennzeichen erscheint, wurde es nicht als solches transkribiert, sondern mit dem Element <tag>g</tag> und dem Attribut <tag>@ref="#typoHyphen"</tag> kodiert. Zum Beispiel:</para>
+            <title>Zeilenumbruch</title>
+            <para>Der Zeilenfall wurde nach der Textquelle mit einem (leeren) <tag>lb/</tag>-Element (line beginning) kodiert. Das <tag>lb/</tag>-Element wurde gemäß den TEI-Richtlinien am <emphasis role="bold">Anfang</emphasis> der Zeile verwendet.</para>
+            <para>Wenn eine Zeile innerhalb eines Wortes beginnt, wurde sie mit dem Attribut <tag>@break="no"</tag>  kodiert. Wenn in der Originalquelle ein Trennzeichen erscheint, wurde es nicht als solches transkribiert, sondern mit dem Element <tag>g</tag> und dem Attribut <tag>@ref="#typoHyphen"</tag> kodiert. Zum Beispiel:</para>
                <programlisting language="xml" xml:space="preserve">y le añadí al propio ti&lt;g ref="#typoHyphen"/&gt;&lt;lb/&gt;empo</programlisting>
          </section>
          <section>
-            <title>Leere Stellen</title>
-            <para>Semantisch bedeutsame Leerstellen (z. B. lassen Autoren manchmal eine Lücke im Text, um ihn später zu ergänzen) wurden mit dem leeren Element <tag>space/</tag> kodiert. Die Wiedergabe solcher Lücken in der Transkription wurde von Auslassungen durch die Redakteure sowie von leeren oder fehlenden Seiten unterschieden, die jeweils mit <tag>gap/</tag> kodiert wurden.</para>
-            <para>Das Ausmaß der Auslassung wurde durch <tag>@unit</tag> und <tag>@quantity</tag> angegeben. Wenn die Anzahl der ausgelassenen Zeilen (unit="lines"), Zeichen (unit="chars") oder Wörter (unit="words") nicht zuverlässig bestimmt werden kann, wurde in <tag>@quantity</tag> der Wert <tag>1</tag> verwendet. Zum Beispiel: <programlisting language="xml" xml:space="preserve">sur une longueur de plus de &lt;space quantity="1" unit="words"/&gt;. Sa largeur... </programlisting>           Optional wurde das Attribut <tag>@dim</tag> verwendet, um anzugeben, ob es sich um einen horizontalen oder vertikalen Leerraum handelt.</para>
+            <title>Leerraum</title>
+            <para>Semantisch bedeutsame Leerstellen (z. B. lassen Autoren manchmal eine Lücke im Text, um ihn später zu ergänzen) wurden mit dem leeren Element <tag>space/</tag> ausgezeichnet. Die Wiedergabe solcher Lücken in der Transkription wurde von Auslassungen durch die Redakteure sowie von leeren oder fehlenden Seiten unterschieden, die jeweils mit <tag>gap/</tag> kodiert wurden.</para>
+            <para>Das Ausmaß der Auslassung wurde durch <tag>@unit</tag> und <tag>@quantity</tag> angegeben. Wenn die Anzahl der ausgelassenen Zeilen (@unit="lines"), Zeichen (@unit="chars") oder Wörter (@unit="words") nicht zuverlässig bestimmt werden kann, wurde in <tag>@quantity</tag> der Wert <tag>1</tag> verwendet. Zum Beispiel:</para>            
+              <programlisting language="xml" xml:space="preserve">sur une longueur de plus de &lt;space quantity="1" unit="words"/&gt;. Sa largeur... </programlisting>
+              <para>Optional wurde das Attribut <tag>@dim</tag> verwendet, um anzugeben, ob es sich um einen horizontalen (@dim="horizontal") oder vertikalen (@dim="vertical") Leerraum handelt.</para>
          </section>
          <section>
             <title>Verzeichnisse</title>
-            <para>Aufzählungen wurden mit dem <tag>Listenelement</tag> kodiert. Jeder Aufzählungspunkt wurde in ein <tag>item-Element</tag> umgeschrieben. Vorhandene Nummerierungen wurden nicht unabhängig kodiert, sondern direkt in das Element <tag>item</tag> übertragen. </para>
+            <para>Aufzählungen wurden mit dem Element <tag>list</tag>, einzelne Aufzählungspunkt in einem <tag>item</tag>-Element ausgezeichnet. </para>
                <programlisting language="xml" xml:space="preserve">&lt;list>
    &lt;item>Le Rio Apure près de S. Fernando 206 t.&lt;/item>
    &lt;item>Orinoco à la bocca Apure 1905 t.&lt;lb/>
@@ -616,13 +618,14 @@
    jusqu’au delà de l’Isle de Urba&lt;g ref="#typoHyphen"/>
    &lt;lb break="no"/>na et de I. vieja de Montica.&lt;/item>
 &lt;/list></programlisting>
+           <para>Vorhandene Aufzählungen oder Nummerierungen (1, 2, 3...; a, b, c...) wurden nicht extra ausgezeichnet, sondern als Text im Element <tag>item</tag> erfasst.</para>
          </section>
          <section>
             <title>Tabellen</title>
-            <para>Die in der Quelle enthaltenen Tabellen wurden als solche transkribiert, wobei zwischen expliziten und impliziten Tabellen unterschieden wird. Als explizite Tabellen gelten solche, die vom Autor erstellt wurden, während implizite Tabellen nur an der Anordnung ihres Inhalts zu erkennen sind. Es wurde zwischen Tabellen und Aufzählungen, die Listen ähneln, unterschieden. </para>
-            <para>Die Tabellen wurden mit dem <tag>table-Element</tag> kodiert. Der ersten Zeile der Tabelle wurde das Attribut <tag>@role="label"</tag> zugewiesen, um als Überschrift zu gelten. Zum Beispiel:</para>
+            <para>Die in der Quelle ausgewiesenen Tabellen wurden als solche transkribiert, wobei zwischen expliziten und impliziten Tabellen unterschieden wird. Als explizite Tabellen gelten solche, die vom Autor erstellt wurden, während implizite Tabellen nur an der Anordnung ihres Inhalts zu erkennen sind. Es wurde zwischen Tabellen und Aufzählungen, die Listen ähneln, unterschieden. </para>
+            <para>Die Tabellen wurden mit dem <tag>table</tag>-Element kodiert. Der ersten Zeile der Tabelle wurde das Attribut <tag>@role="label"</tag> zugewiesen, um sie (sofern in der Quelle so ausgewiesen) als Überschrift zu identifizieren. Zum Beispiel:</para>
 
-               <programlisting language="xml" xml:space="preserve">&lt;t&lt;table rows="3" cols="2"&gt;
+               <programlisting language="xml" xml:space="preserve">&lt;table rows="3" cols="2"&gt;
    &lt;head&gt;Tabla&lt;/head&gt;
       &lt;row role="label"&gt;
          &lt;cell&gt;[Header column 1]&lt;/cell&gt;
@@ -636,7 +639,7 @@
          </section>
          <section>
             <title>Unterschriften</title>
-            <para>Optional wurde in Dokumenten wie Protokollen die Unterschrift der Sitzungsteilnehmer in dem Element <tag>closer</tag> kodiert. Zu diesem Zweck wurde jede Unterschrift mit dem Element <tag>signiert</tag> kodiert. Zum Beispiel:</para>
+            <para>Optional wurde in Dokumenten wie Protokollen die Unterschrift der Sitzungsteilnehmer in dem Element <tag>closer</tag> kodiert. Zu diesem Zweck wurde jede Unterschrift mit dem Element <tag>signed</tag> ausgezeichnet. Zum Beispiel:</para>
                <programlisting language="xml" xml:space="preserve">&lt;closer>
    &lt;signed> Benigno Duque &lt;choice>
              &lt;orig>deHeredia&lt;/orig>
@@ -647,8 +650,8 @@
          </section>
          <section>
             <title>Anmerkungen</title>
-            <para>Anmerkungen des Autors oder eines zeitgenössischen Redakteurs wurden nicht nach ihrer Position im Manuskript eingefügt, sondern an der Textstelle, auf die sich die Anmerkung tatsächlich bezieht (oder von der der Redakteur vernünftigerweise annimmt, dass sie sich darauf bezieht). </para>
-            <para>Die Notizen wurden mit dem Element <tag>note</tag> kodiert</para>
+            <para>Anmerkungen des Autors oder eines zeitgenössischen Redakteurs wurden nicht nach ihrer Position im Manuskript eingefügt, sondern an der Textstelle, auf die sich die Anmerkung tatsächlich bezieht (oder von der der Bearbeiter der Edition vernünftigerweise annimmt, dass sie sich darauf bezieht). </para>
+            <para>Die Anmerkungen wurden mit dem Element <tag>note</tag> kodiert:</para>
                <programlisting language="xml" xml:space="preserve">En los partidos más remotos una caballería
 &lt;note place="mBottom" hand="#author">La caballería es una superficie de
 tierra de quatro cientas treinta y dos varas en quadro.&lt;/note> de tierra
@@ -669,7 +672,7 @@ montuosa se paga en el día a quinientos pesos fuertes al contado,[…]</program
                   <tr>
                      <td>
                         <para>
-                           <tag>#author</tag>
+                           "#author"
                         </para>
                      </td>
                      <td>
@@ -679,7 +682,7 @@ montuosa se paga en el día a quinientos pesos fuertes al contado,[…]</program
                   <tr>
                      <td>
                         <para>
-                           <tag>#addressee</tag>
+                           "#addressee"
                         </para>
                      </td>
                      <td>
@@ -689,16 +692,16 @@ montuosa se paga en el día a quinientos pesos fuertes al contado,[…]</program
                   <tr>
                      <td>
                         <para>
-                           <tag>#unkown</tag>
+                           "#unkown"
                         </para>
                      </td>
                      <td>
-                        <para>Unbekannt</para>
+                        <para>Unbekannter Verfasser</para>
                      </td>
                   </tr>
                </tbody>
             </informaltable>
-            <para>Der Ort der Notiz wurde mit dem Attribut <tag>@place</tag>kodiert:</para>
+            <para>Der Ort der Notiz wurde mit dem Attribut <tag>@place</tag> kodiert:</para>
             <informaltable>
                <thead>
                   <tr>
@@ -714,7 +717,7 @@ montuosa se paga en el día a quinientos pesos fuertes al contado,[…]</program
                   <tr>
                      <td>
                         <para>
-                           <tag>left</tag>
+                           "left"
                         </para>
                      </td>
                      <td>
@@ -724,7 +727,7 @@ montuosa se paga en el día a quinientos pesos fuertes al contado,[…]</program
                   <tr>
                      <td>
                         <para>
-                           <tag>right</tag>
+                           "right"
                         </para>
                      </td>
                      <td>
@@ -734,7 +737,7 @@ montuosa se paga en el día a quinientos pesos fuertes al contado,[…]</program
                   <tr>
                      <td>
                         <para>
-                           <tag>mTop</tag>
+                           "mTop"
                         </para>
                      </td>
                      <td>
@@ -744,7 +747,7 @@ montuosa se paga en el día a quinientos pesos fuertes al contado,[…]</program
                   <tr>
                      <td>
                         <para>
-                           <tag>mBottom</tag>
+                           "mBottom"
                         </para>
                      </td>
                      <td>
@@ -754,21 +757,24 @@ montuosa se paga en el día a quinientos pesos fuertes al contado,[…]</program
                   <tr>
                      <td>
                         <para>
-                           <tag>inline</tag>
+                           "inline"
                         </para>
                      </td>
                      <td>
-                        <para>im Einklang</para>
+                        <para>innerhalb der Zeile</para>
                      </td>
                   </tr>
                </tbody>
             </informaltable>
-            <para>Wenn der Autor eine Einfügemarke verwendet, wurde diese mit dem leeren Element <tag>metamark/</tag> kodiert. Das Aussehen der Einfügemarke (Sternchen, Zahl usw.) wurde nicht explizit angegeben. </para>
-            <para>Es wird zwischen Anmerkungen und Zusätzen unterschieden: Zusätze ergänzen den Haupttext und sind syntaktisch in ihn integriert. Anmerkungen sind eigenständige Texteinheiten.</para>
+            <para>Wenn der Autor eine Einweisungszeichen verwendet, wurde dieses mit dem leeren Element <tag>metamark/</tag> kodiert. Die spezifische Gestaltung des Zeichens (Sternchen, Zahl usw.) wurde nicht explizit ausgewiesen.</para>
+            <para>Es wird zwischen Anmerkungen und Ergänzen (<tag>add</tag>) unterschieden: Zusätze ergänzen den Haupttext und sind syntaktisch in ihn integriert. Anmerkungen sind eigenständige Texteinheiten.</para>
          </section>
       </section>
+
+<!-- TK revisado hasta aquí -->
+     
       <section xml:id="intervenciones-autoriales">
-         <title>Autorielle Interventionen</title>
+         <title>Textbearbeitungen des Autors</title>
          <para>In allen digitalen Editionen des Projekts wurden Änderungen der Typografie und Eingriffe des Autors explizit, d. h. mit TEI-Elementen, kodiert.</para>
          <section>
             <title>Hervorgehobener Text</title>
