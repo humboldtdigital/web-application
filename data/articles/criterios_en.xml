@@ -1,4 +1,4 @@
-<?xml-model href="https://docbook.org/xml/5.0/xsd/docbook.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema" ?><?xml-stylesheet type="text/css" href="../../../../../../../Program%20Files/Oxygen%20XML%20Author%2023/frameworks/docbook/css/docbook.css"?><article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+<?xml-model href="https://docbook.org/xml/5.0/xsd/docbook.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema" ?><article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
    <info>
       <title>Editing Guidelines</title>
       <copyright>
@@ -170,8 +170,7 @@
    A. Humboldt&lt;/title&gt;         </programlisting>
          <para>The <tag>@xml:lang</tag> attribute has been optionally used with a standard code to
             indicate the language of the alternative title: "es" for Spanish, "fr" for French, "de"
-            for German, "en" for English, etc. for French, "de" for German, "en" for English,
-            etc.</para>
+            for German, "en" for English, etc.</para>
       </section>
       <section>
          <title>Editors and collaborators</title>
