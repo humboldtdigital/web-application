@@ -770,15 +770,13 @@ montuosa se paga en el día a quinientos pesos fuertes al contado,[…]</program
             <para>Es wird zwischen Anmerkungen und Ergänzen (<tag>add</tag>) unterschieden: Zusätze ergänzen den Haupttext und sind syntaktisch in ihn integriert. Anmerkungen sind eigenständige Texteinheiten.</para>
          </section>
       </section>
-
-<!-- TK revisado hasta aquí -->
-     
+    
       <section xml:id="intervenciones-autoriales">
          <title>Textbearbeitungen des Autors</title>
          <para>In allen digitalen Editionen des Projekts wurden Änderungen der Typografie und Eingriffe des Autors explizit, d. h. mit TEI-Elementen, kodiert.</para>
          <section>
             <title>Hervorgehobener Text</title>
-            <para>Hervorgehobene Textrandmarkierungen wurden mit dem <tag>hi-Element</tag> (highlighted) und dem <tag>@rendition-Attribut</tag> kodiert, um ihr Aussehen zu bestimmen:</para>
+            <para>Hervorgehobene Textrandmarkierungen wurden mit dem Element <tag>hi</tag> (highlighted) und dem Attribut <tag>@rendition</tag> ausgezeichnet, um ihr Aussehen zu bestimmen:</para>
             <informaltable>
                <thead>
                   <tr>
@@ -797,7 +795,7 @@ montuosa se paga en el día a quinientos pesos fuertes al contado,[…]</program
                      </td>
                      <td>
                         <para>
-                           <tag>#u</tag>
+                           "#u"
                         </para>
                      </td>
                   </tr>
@@ -807,17 +805,17 @@ montuosa se paga en el día a quinientos pesos fuertes al contado,[…]</program
                      </td>
                      <td>
                         <para>
-                           <tag>#uu</tag>
+                           "#uu"
                         </para>
                      </td>
                   </tr>
                   <tr>
                      <td>
-                        <para>am Rande vermerkt</para>
+                        <para>Anstreichung am Rand</para>
                      </td>
                      <td>
                         <para>
-                           <tag>#(*)</tag>
+                           "#mMM"
                         </para>
                      </td>
                   </tr>
@@ -825,11 +823,13 @@ montuosa se paga en el día a quinientos pesos fuertes al contado,[…]</program
             </informaltable>
             <para>Zum Beispiel:</para>
             <programlisting language="xml" xml:space="preserve">Sucinta noticia de la situación &lt;hi rendition="#uu"&gt;presente de esta colonia. Agosto de 800''&lt;/hi&gt;</programlisting>
-            <para>Wenn ein ganzer Absatz in der hervorgehobenen Schrift mit einer Markierung am Rand erscheint, wurde er mit dem Element <tag>p</tag> und dem Attribut <tag>@rendition</tag> mit dem Wert <tag>#mMM</tag> (Randmarkierung) kodiert.</para>
+            <para>
+               Falls ein ganzer Absatz am Rand angestrichen ist, erhält das Element <tag>p</tag> das Attribut <tag>@rendition</tag> mit dem Wert "#mMM" (Anstreichung am Rand).</para>
          </section>
          <section>
             <title>Hochgestellt</title>
-            <para>Zahlen oder Buchstaben, die im Textfont hochgestellt (d.h. leicht erhöht über der Zeile) erscheinen, wurden mit dem Element <tag>hi</tag> (hervorgehoben) und dem Attribut <tag>@rendition</tag> mit dem Wert <tag>#sup</tag> kodiert. Zum Beispiel: </para>
+            <para>
+               Zahlen, Buchstaben oder ganze Wörter, die im Manuskript (zumeist als Kürzung eines Wortes) hochgestellt sind, werden durch das Element <tag>hi</tag> (highlighted) ausgezeichnet. Das Attribut <tag>@rendition</tag> ist dabei auf den Wert "#sup" gesetzt. Zum Beispiel: </para>
                <programlisting language="xml" xml:space="preserve">le ofreciera de mi parte
 algunas observaciones &lt;choice&gt;
    &lt;abbr&gt;sob&lt;hi rendition="#sup"&gt;e&lt;/hi&gt;&lt;/abbr&gt;
@@ -837,13 +837,13 @@ algunas observaciones &lt;choice&gt;
 &lt;/choice&gt; los&lt;lb/&gt; principales hechos </programlisting>
          </section>
          <section>
-            <title>Löschungen</title>
-            <para>Solange er lesbar ist und unabhängig davon, ob es sich um Zeilenumbrüche, Abkürzungen, Normalisierungen und redaktionelle Korrekturen oder Ergänzungen handelt, wurde der gelöschte Text mit dem Element del (deletion) kodiert, wobei das Attribut @rendition zur Angabe der Art der Löschung verwendet wurde:</para>
+            <title>Streichungen</title>
+            <para>Solange er lesbar ist und unabhängig davon, ob es sich um Zeilenumbrüche, Abkürzungen, Normalisierungen und redaktionelle Korrekturen oder Ergänzungen handelt, wurde der gelöschte Text mit dem Element <tag>del</tag> (deletion) kodiert, wobei das Attribut <tag>@rendition</tag> zur Angabe der Art der Löschung verwendet wurde:</para>
             <informaltable>
                <thead>
                   <tr>
                      <td>
-                        <para>Art der Löschung</para>
+                        <para>Art der Streichung</para>
                      </td>
                      <td>
                         <para>Wert von <tag>@rendition</tag>         </para>
@@ -853,29 +853,29 @@ algunas observaciones &lt;choice&gt;
                <tbody>
                   <tr>
                      <td>
-                        <para>überschrieben</para>
+                        <para>ursprünglicher Text überschrieben</para>
                      </td>
                      <td>
                         <para>
-                           <tag>#ow</tag>
+                           "#ow"
                         </para>
                      </td>
                   </tr>
                   <tr>
-                     <td>durchgestrichen</td>
+                     <td>Textstelle durchgestrichen</td>
                      <td>
                         <para>
-                           <tag>#s</tag>
+                           "#s"
                         </para>
                      </td>
                   </tr>
                   <tr>
                      <td>
-                        <para>Gelöscht</para>
+                        <para>ausradiert</para>
                      </td>
                      <td>
                         <para>
-                           <tag>#erased</tag>
+                           "#erased"
                         </para>
                      </td>
                   </tr>
@@ -887,8 +887,8 @@ muebles, &lt;del rendition="#s">y&lt;/del> vestidos y tren de calle.</programlis
          </section>
          <section>
             <title>Ergänzungen</title>
-            <para>In allen Ausgaben des Projekts wurden die eigenen Ergänzungen des Autors zur Textquelle kodiert. Im Gegensatz zu den Notizen erweitern die Ergänzungen den Text nur und sind syntaktisch integriert.</para>
-            <para>Hinzufügungen des Autors wurden mit <tag>add</tag> (addition) codiert, wobei das Attribut <tag>@place</tag> den Ort der Hinzufügung angibt:</para>
+            <para>Die Ergänzungen, die der Autor selbst im Manuskript vorgenommen hat, werden ausgezeichnet. Unter Ergänzungen werden alle Hinzufügungen des Autors verstanden, die den Text nur erweitern und sich syntaktisch eingliedern.</para>
+            <para>Hinzufügungen des Autors wurden mit <tag>add</tag> (addition) ausgezeichnet, wobei das Attribut <tag>@place</tag> den Ort der Hinzufügung angibt:</para>
             <informaltable>
                <thead>
                   <tr>
@@ -904,81 +904,81 @@ muebles, &lt;del rendition="#s">y&lt;/del> vestidos y tren de calle.</programlis
                   <tr>
                      <td>
                         <para>
-                           <tag>superlinear</tag>
+                           "superlinear"
                         </para>
                      </td>
                      <td>
-                        <para>oberhalb der Linie</para>
+                        <para>über der Zeile</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>sublinear</tag>
+                           "sublinear"
                         </para>
                      </td>
                      <td>
-                        <para>unter dem Strich</para>
+                        <para>unter der Zeile</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>intralinear</tag>
+                           "intralinear"
                         </para>
                      </td>
                      <td>
-                        <para>im Einklang</para>
+                        <para>innerhalb der Zeile</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>über</tag>
+                           "across"
                         </para>
                      </td>
                      <td>
-                        <para>quer durch den Text</para>
+                        <para>über den ursprünglichen Text</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>links</tag>
+                           "left"
                         </para>
                      </td>
                      <td>
-                        <para>linker Rand</para>
+                        <para>am linken Rand</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>rechts</tag>
+                           "right"
                         </para>
                      </td>
                      <td>
-                        <para>rechter Rand</para>
+                        <para>am rechten Rand</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>mTop</tag>
+                           "mTop"
                         </para>
                      </td>
                      <td>
-                        <para>oberer Rand</para>
+                        <para>am oberen Rand</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>mBottom</tag>
+                           "mBottom"
                         </para>
                      </td>
                      <td>
-                        <para>unterer Rand</para>
+                        <para>am unteren Rand</para>
                      </td>
                   </tr>
                </tbody>
@@ -987,12 +987,12 @@ muebles, &lt;del rendition="#s">y&lt;/del> vestidos y tren de calle.</programlis
                <programlisting language="xml" xml:space="preserve">[…] y logré para el Comercio con estranjeros,
 los &lt;add place="intralinear">ensanches&lt;/add> que se
 explican en el documento […]</programlisting>
-            <para>Wenn der Autor in der Quelle eine Einfügemarke gesetzt hat, wurde diese mit dem Element <tag>metamark/</tag> kodiert. Die Form der Einfügemarke (Sternchen, Nummer usw.) wurde nicht angegeben.</para>
+            <para>Wenn der Autor in der Quelle eine Einfügemarke gesetzt hat, wurde diese mit dem Element <tag>metamark/</tag> kodiert. Die Form des Einweisungszeichens (Sternchen, Nummer usw.) wurde nicht angegeben.</para>
          </section>
          <section>
-            <title>Vertretungen</title>
-            <para>Wird in der Quelle ein Wort oder eine Textpassage gestrichen und gleichzeitig ein Wort hinzugefügt, so wurden diese beiden Textphänomene zusammen mit dem Element <tag>subst</tag> (Substitution) kodiert.</para>
-            <para>Die Löschung wurde mit dem Element <tag>del</tag> (Löschung) kodiert. Die Art der Löschung wurde mit dem Attribut <tag>@rendition</tag> angegeben:</para>
+            <title>Zeitgenössische Korrekturen</title>
+            <para>Wird in der Quelle ein Wort oder eine Textpassage gestrichen und gleichzeitig ein Wort hinzugefügt, so wurden diese beiden Textphänomene zusammen mit dem Element <tag>subst</tag> (substitution) kodiert.</para>
+            <para>Die Löschung wurde mit dem Element <tag>del</tag> (deletion) kodiert. Die Art der Löschung wurde mit dem Attribut <tag>@rendition</tag> angegeben:</para>
             <informaltable>
                <thead>
                   <tr>
@@ -1007,37 +1007,40 @@ explican en el documento […]</programlisting>
                <tbody>
                   <tr>
                      <td>
-                        <para><tag>#ow</tag>
+                        <para>
+                           "#ow"
                         </para>
                      </td>
                      <td>
-                        <para> überschrieben </para>
+                        <para>ursprünglicher Text überschrieben</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
-                        <para>#s </para>
+                        "#s"
                      </td>
                      <td>
                         <para>
-                           <tag>durchgestrichen</tag>
+                           <tag>Textstelle durchgestrichen</tag>
                         </para>
                      </td>
                   </tr>
                   <tr>
                      <td>
-                        <para><tag>#erased</tag></para>
+                        <para>
+                           "#erased"
+                        </para>
                      </td>
                      <td>
                         <para>
-                           <tag>gelöscht</tag>
+                           <tag>ausradiert</tag>
                         </para>
                      </td>
                   </tr>
                </tbody>
             </informaltable>
-            <para>Die Hinzufügung ist mit dem Element  <tag>add</tag> (Hinzufügung) kodiert worden.
-               Der Ort der Hinzufügung wurde mit dem Attribut <tag>@place</tag> spezifiziert:</para>
+            <para>Das ersetzende Wort (bzw. die Wörter) wurde mit dem Element <tag>add</tag> (addition) ausgezeichnet.
+               Der Ort der Hinzufügung wurde im Attribut <tag>@place</tag> spezifiziert:</para>
             <informaltable>
                <thead>
                   <tr>
@@ -1053,81 +1056,81 @@ explican en el documento […]</programlisting>
                   <tr>
                      <td>
                         <para>
-                           <tag>superlinear</tag>
+                           "superlinear"
                         </para>
                      </td>
                      <td>
-                        <para>oberhalb der Linie</para>
+                        <para>über der Zeile</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>sublinear</tag>
+                           "sublinear"
                         </para>
                      </td>
                      <td>
-                        <para>unter dem Strich</para>
+                        <para>unter der Zeile</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>intralinear</tag>
+                           "intralinear"
                         </para>
                      </td>
                      <td>
-                        <para>im Einklang</para>
+                        <para>innerhalb der Zeile</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>über</tag>
+                           "across"
                         </para>
                      </td>
                      <td>
-                        <para>quer durch den Text</para>
+                        <para>über den ursprünglichen Text</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>links</tag>
+                           "left"
                         </para>
                      </td>
                      <td>
-                        <para>linker Rand</para>
+                        <para>am linken Rand</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>rechts</tag>
+                           "right"
                         </para>
                      </td>
                      <td>
-                        <para>rechter Rand</para>
+                        <para>am rechten Rand</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>mTop</tag>
+                           "mTop"
                         </para>
                      </td>
                      <td>
-                        <para>oberer Rand</para>
+                        <para>am oberen Rand</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
                         <para>
-                           <tag>mBottom</tag>
+                           "mBottom"
                         </para>
                      </td>
                      <td>
-                        <para>unterer Rand</para>
+                        <para>am unteren Rand</para>
                      </td>
                   </tr>
                </tbody>
@@ -1145,7 +1148,7 @@ explican en el documento […]</programlisting>
          <para>In allen digitalen Ausgaben des Projekts wurden die redaktionellen Eingriffe explizit kodiert.</para>
          <section>
             <title>Normalisierungen</title>
-            <para>Rechtschreibung, Zeichensetzung, Großschreibung und Silbentrennung wurden mit dem Element <tag>choice</tag> und seinen beiden untergeordneten Elementen <tag>orig</tag> (ursprüngliche Form) und <tag>reg</tag> (regularisierte Form) ausdrücklich normalisiert. Im <tag>orig-Element</tag> wurde die ursprüngliche Form, wie sie in der Textquelle vorkommt, kodiert, während im <tag>reg-Element</tag> die regularisierte Form kodiert wurde, d. h. sie wurde an die aktuelle orthografische Norm angepasst, um die Lesbarkeit des Textes zu erleichtern. Zum Beispiel: </para>
+            <para>Rechtschreibung, Zeichensetzung, Großschreibung und Silbentrennung wurden mit dem Element <tag>choice</tag> und seinen beiden untergeordneten Elementen <tag>orig</tag> und <tag>reg</tag> ausdrücklich normalisiert. Im Element <tag>orig</tag> wurde die ursprüngliche Form, wie sie in der Textquelle vorkommt, kodiert, während im Element <tag>reg</tag> die normalisierte Form ausgezeichnet wurde, d. h. sie wurde an die aktuelle orthografische Norm angepasst, um die Lesbarkeit des Textes zu erleichtern. Zum Beispiel: </para>
                <programlisting language="xml" xml:space="preserve">&lt;choice>
    &lt;orig>espendiendo&lt;/orig>
    &lt;reg>expendiendo&lt;/reg>
@@ -1160,7 +1163,7 @@ explican en el documento […]</programlisting>
    &lt;orig>político&lt;/orig>
    &lt;reg>Político&lt;/reg>
 &lt;/choice></programlisting>
-            <para>Die gleiche Normalisierungsmethode wurde auch auf Zusammenziehungen oder Wortverbindungen angewandt:</para>
+            <para>Normalisiert wurden auch heute unübliche Verbindungen von zwei Wörtern durch fehlenden Wortabstand oder Ligaturen:</para>
                <programlisting language="xml" xml:space="preserve">&lt;choice>
    &lt;orig>dela&lt;/orig>
    &lt;reg>de la&lt;/reg>
@@ -1168,16 +1171,16 @@ explican en el documento […]</programlisting>
          </section>
          <section>
             <title>Abkürzungen</title>
-            <para>Abkürzungen wurden mit dem <tag>choice-Element</tag> und seinen beiden untergeordneten Elementen <tag>abbr</tag> (Abkürzung) und <tag>expan</tag> (aufgelöste Abkürzung) kodiert. Im <tag>abbr-Element</tag> wurde die abgekürzte Form, die in der Textquelle erscheint, beibehalten, während die Redakteure im <tag>expan-Element</tag> die aufgelöste oder erweiterte Form bereitgestellt haben, um die Lesbarkeit des Textes zu erleichtern. </para>
+            <para>Abkürzungen wurden mit dem Element <tag>choice</tag> und seinen beiden untergeordneten Elementen <tag>abbr</tag> (abbreviation) und <tag>expan</tag> (expansion) kodiert. Im Element <tag>abbr</tag> wurde die abgekürzte Form, die in der Textquelle erscheint, beibehalten, während im Element <tag>expan</tag> die aufgelöste oder erweiterte Wortform bereitgestellt wurde, um die Lesbarkeit des Textes zu erleichtern. </para>
                <programlisting language="xml" xml:space="preserve">&lt;choice>
    &lt;abbr>q&lt;/abbr>
    &lt;expan>que&lt;/expan>
 &lt;/choice></programlisting>
-            <para>Akronyme wurden als Abkürzungen kodiert, wobei die gleiche Methode wie bei der <tag>Auswahl</tag> angewandt wurde.</para>
+            <para>Akronyme wurden als Abkürzungen kodiert und ebenfalls mit der hier beschriebenen Methode ausgezeichnet.</para>
          </section>
          <section>
-            <title>Mitgelieferte Wörter, Zeichen und Interpunktion</title>
-            <para>Wörter, Zeichen oder Satzzeichen, die in der Quelle eindeutig fehlen und vom Redakteur geliefert (d. h. hinzugefügt) wurden, wurden mit dem <tag>gelieferten</tag> Element kodiert. Das Attribut <tag>@cert </tag>(certainty) wurde verwendet, um die Gewissheit zu kodieren, mit der der Text geliefert wurde:</para>
+            <title>Fehlende Wörter, Buchstaben oder Satzzeichen</title>
+            <para>Wörter, Buchstaben oder Satzzeichen, die in der Quelle eindeutig fehlen und vom Redakteur ergänzt wurden, wurden mit dem Element <tag>supplied</tag> ausgezeichnet. Das Attribut <tag>@cert</tag> (certainty) gibt die Wahrscheinlichkeit an, mit der diese Ergänzung zutrifft:</para>
             <informaltable>
                <thead>
                   <tr>
@@ -1193,7 +1196,7 @@ explican en el documento […]</programlisting>
                   <tr>
                      <td>
                         <para>
-                           <tag>low</tag>
+                           "low"
                         </para>
                      </td>
                      <td>
@@ -1203,7 +1206,7 @@ explican en el documento […]</programlisting>
                   <tr>
                      <td>
                         <para>
-                           <tag>high</tag>
+                           "high"
                         </para>
                      </td>
                      <td>
@@ -1217,7 +1220,7 @@ explican en el documento […]</programlisting>
          </section>
          <section>
             <title>Fehler und Berichtigungen</title>
-            <para>Offensichtliche Fehler, die in der Textquelle auftreten, wurden mit dem Element <tag>choice</tag> kodiert. Im Inneren wurde das fehlerhafte Wort mit dem Element <tag>sic</tag> kodiert, während die Korrektur mit <tag>corr</tag> kodiert wurde. Im Element corr gibt das Attribut <tag>@cert</tag> (certainty) an, wie sicher die Korrektur ist: </para>
+            <para>Offensichtliche Fehler, die in der Textquelle auftreten, wurden mit dem Element <tag>choice</tag> ausgezeichnet. Das Originalwort wurde in <tag>sic</tag> notiert, die Korrektur in <tag>corr</tag>. Im Element <tag>corr</tag> kann durch das Attribut <tag>@cert</tag> (certainty) die Wahrscheinlichkeit angegeben werden, mit der die Korrektur zutrifft: </para>
             <informaltable>
                <thead>
                   <tr>
@@ -1232,29 +1235,29 @@ explican en el documento […]</programlisting>
                <tbody>
                   <tr>
                      <td>
-                        <para>low</para>
+                        "low"
                      </td>
                      <td>
                         <para>
-                          <tag>geringe</tag> Gewissheit</para>
+                          geringe Gewissheit</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
-                        <para>medium</para>
+                        "medium"
                      </td>
                      <td>
                         <para>
-                          <tag>mittlere</tag> Gewissheit</para>
+                          mittlere Gewissheit</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
-                        <para>high</para>
+                        "high"
                      </td>
                      <td>
                         <para>
-                          <tag>hohe</tag> Gewissheit</para>
+                          hohe Gewissheit</para>
                      </td>
                   </tr>
                </tbody>
@@ -1264,42 +1267,42 @@ explican en el documento […]</programlisting>
    &lt;sic>Humbold&lt;/sic>
    &lt;corr cert="high">Humboldt&lt;/corr>
 &lt;/choice>    </programlisting>
-            <para>Wenn ein Wort wiederholt wird und es klar ist, dass es sich um einen Fehler handelt, wurde das gleiche Element <tag>choice</tag> verwendet, um das fehlerhafte Wort mit <tag>sic</tag> zu kodieren. In diesen Fällen wurde jedoch keine korrigierte Form angegeben, sondern das Element <tag>corr</tag> verwendet und leer gelassen. Außerdem wurde das Attribut type mit dem Wert "deleted" verwendet, um anzuzeigen, dass ein überflüssiges Wort entfernt wurde. Zum Beispiel: </para>
+            <para>Wenn ein Wort wiederholt wird und es klar ist, dass es sich um einen Fehler handelt, wurde das gleiche Element <tag>choice</tag> verwendet, um das fehlerhafte Wort mit <tag>sic</tag> zu kodieren. In diesen Fällen wurde jedoch keine korrigierte Form angegeben, sondern das Element <tag>corr</tag> verwendet und leer gelassen. Außerdem wurde das Attribut <tag>@type</tag> mit dem Wert "deleted" verwendet, um anzuzeigen, dass ein überflüssiges Wort entfernt wurde. Zum Beispiel: </para>
                <programlisting language="xml" xml:space="preserve">&lt;choice>
    &lt;sic>más&lt;/sic>
    &lt;corr type="deleted"/>
 &lt;/choice> cantidad</programlisting>
          </section>
          <section>
-            <title>Unklarer Text</title>
+            <title>Unsichere Lesarten</title>
             <para>Wörter oder Passagen, die nicht leicht lesbar sind, wurden mit dem Element <tag>unclear</tag> kodiert. Das Attribut <tag>@reason</tag> wurde verwendet, um den Grund für die unklare Lesung anzugeben: </para>
             <informaltable>
                <thead>
                   <tr>
                      <td>Wert</td>
                      <td>
-                        <para>Grund </para>
+                        <para>Grund</para>
                      </td>
                   </tr>
                </thead>
                <tbody>
                   <tr>
-                     <td>illegible </td>
+                     "illegible"
                      <td>
-                        <para> unklarer Text</para>
+                        <para>unleserlicher Text</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
-                        <para>covered</para>
+                        "covered"
                      </td>
                      <td>
-                        <para> unklar zu lesen wegen der Durchstreichung</para>
+                        <para>nicht/schwer zu lesen wege Überzeichnung/Überschreibung</para>
                      </td>
                   </tr>
                </tbody>
             </informaltable>
-            <para>Mit dem Attribut <tag>@cert </tag>(certainty) wurde die Sicherheit der Intervention kodiert. </para>
+            <para>Mit dem Attribut <tag>@cert</tag> (certainty) wurde die Zuverlässigkeit der wahrscheinlichen Lesung kodiert.</para>
             <informaltable>
                <thead>
                   <tr>
@@ -1314,20 +1317,20 @@ explican en el documento […]</programlisting>
                <tbody>
                   <tr>
                      <td>
-                        <para>low</para>
+                        "low"
                      </td>
                      <td>
                         <para>
-                          <tag>geringe</tag> Gewissheit</para>
+                          geringe Gewissheit</para>
                      </td>
                   </tr>
                   <tr>
                      <td>
-                        <para>high</para>
+                        "high"
                      </td>
                      <td>
                         <para>
-                          <tag>hohe</tag> Gewissheit</para>
+                          hohe Gewissheit</para>
                      </td>
                   </tr>
                </tbody>
@@ -1336,7 +1339,7 @@ explican en el documento […]</programlisting>
                <programlisting language="xml" xml:space="preserve">&lt;unclear reason="illegible" cert="high">año&lt;/unclear></programlisting>
          </section>
          <section>
-            <title>Unlesbarkeit</title>
+            <title>Nicht lesbare Zeichen und Schäden</title>
             <para>Unleserliche Zeichen oder Wörter in der Textquelle aufgrund von Materialschäden oder unklarer Schrift wurden mit dem leeren Element <tag>gap/</tag> kodiert. </para>
             <para>Das Attribut <tag>@reason</tag> wurde verwendet, um den Grund für die Unlesbarkeit anzugeben:</para>
             <informaltable>
@@ -1346,7 +1349,7 @@ explican en el documento […]</programlisting>
                         <para>Grund</para>
                      </td>
                      <td>
-                        <para>Wert von <tag>@reason</tag>      </para>
+                        <para>Wert für <tag>@reason</tag></para>
                      </td>
                   </tr>
                </thead>
@@ -1357,7 +1360,7 @@ explican en el documento […]</programlisting>
                      </td>
                      <td>
                         <para>
-                           <tag>verloren</tag>
+                           "lost"
                         </para>
                      </td>
                   </tr>
@@ -1367,31 +1370,31 @@ explican en el documento […]</programlisting>
                      </td>
                      <td>
                         <para>
-                           <tag>unleserlich</tag>
+                           "illegible"
                         </para>
                      </td>
                   </tr>
                   <tr>
                      <td>
-                        <para> unklar zu lesen, da durchgestrichen</para>
+                        <para>durch Überschreibung/Überzeichnung unleserlich</para>
                      </td>
                      <td>
                         <para>
-                           <tag>überdacht</tag>
+                           "covered"
                         </para>
                      </td>
                   </tr>
                </tbody>
             </informaltable>
-            <para>Wenn die Anzahl der Zeilen, Wörter usw. bekannt ist, wurden sie mit <tag>@unit</tag> und <tag>@quantity</tag> kodiert. </para>
+            <para>Wenn die Anzahl der Zeilen, Wörter usw. bekannt ist, wurden sie mit <tag>@unit</tag> und <tag>@quantity</tag> ausgezeichnet. </para>
             <informaltable>
                <thead>
                   <tr>
                      <td>
-                        <para>Unleserliche Einheit</para>
+                        <para>Nicht lesebares Segment</para>
                      </td>
                      <td>
-                        <para>Wert der <tag>@Einheit</tag>       </para>
+                        <para>Wert für <tag>@unit</tag></para>
                      </td>
                   </tr>
                </thead>
@@ -1402,7 +1405,7 @@ explican en el documento […]</programlisting>
                      </td>
                      <td>
                         <para>
-                           <tag>chars</tag>
+                           "chars"
                         </para>
                      </td>
                   </tr>
@@ -1412,7 +1415,7 @@ explican en el documento […]</programlisting>
                      </td>
                      <td>
                         <para>
-                           <tag>lines</tag>
+                           "lines"
                         </para>
                      </td>
                   </tr>
@@ -1422,7 +1425,7 @@ explican en el documento […]</programlisting>
                      </td>
                      <td>
                         <para>
-                           <tag>pages</tag>
+                           "pages"
                         </para>
                      </td>
                   </tr>
@@ -1432,13 +1435,13 @@ explican en el documento […]</programlisting>
                      </td>
                      <td>
                         <para>
-                           <tag>words</tag>
+                           "words"
                         </para>
                      </td>
                   </tr>
                </tbody>
             </informaltable>
-            <para>Im Attribut <tag>@quantity</tag> wurde die Anzahl der nicht lesbaren Zeichen, Zeilen usw. verschlüsselt. </para>
+            <para>Im Attribut <tag>@quantity</tag> wurde die Anzahl der nicht lesbaren Zeichen, Zeilen usw. ausgezeichnet. </para>
                <programlisting language="xml" xml:space="preserve">&lt;gap reason="illegible" unit="words" quantity="3"/&gt;</programlisting>
             <para>Wenn ein Zeichen (oder eine Zeichenkette) durchgestrichen ist und nicht gelesen werden kann, wurde es sowohl mit <tag>del</tag> als auch mit <tag>gap/</tag> kodiert:</para>
                <programlisting language="xml" xml:space="preserve">&lt;del rendition="#s">
@@ -1449,15 +1452,15 @@ explican en el documento […]</programlisting>
          </section>
          <section>
             <title>Auslassungen</title>
-            <para>Auslassungen wurden explizit kodiert. Auslassungen von Zeichen, Wörtern, Textpassagen oder ganzen Seiten durch Redakteure und Verleger wurden mit dem leeren Element <tag>gap/</tag> kodiert. Das Attribut <tag>@unit</tag> gibt die Art der Einheit an, die der Herausgeber berücksichtigt: </para>
+            <para>Auslassungen wurden explizit ausgezeichnet. Auslassungen von Zeichen, Wörtern, Textpassagen oder ganzen Seiten durch Bearbeiter und Herausgeber wurden mit dem leeren Element <tag>gap/</tag> kodiert. Das Attribut <tag>@unit</tag> gibt den Segment-Typ an, der nicht transkribiert wurde: </para>
             <informaltable>
                <thead>
                   <tr>
                      <td>
-                        <para>Unleserliche Einheit</para>
+                        <para>Nicht transkribierte Einheit</para>
                      </td>
                      <td>
-                        <para>Wert der <tag>@Einheit</tag>       </para>
+                        <para>Wert für <tag>@unit</tag></para>
                      </td>
                   </tr>
                </thead>
@@ -1468,7 +1471,7 @@ explican en el documento […]</programlisting>
                      </td>
                      <td>
                         <para>
-                           <tag>chars</tag>
+                           "chars"
                         </para>
                      </td>
                   </tr>
@@ -1478,7 +1481,7 @@ explican en el documento […]</programlisting>
                      </td>
                      <td>
                         <para>
-                           <tag>lines</tag>
+                           "lines"
                         </para>
                      </td>
                   </tr>
@@ -1488,7 +1491,7 @@ explican en el documento […]</programlisting>
                      </td>
                      <td>
                         <para>
-                           <tag>pages</tag>
+                           "pages"
                         </para>
                      </td>
                   </tr>
@@ -1498,7 +1501,7 @@ explican en el documento […]</programlisting>
                      </td>
                      <td>
                         <para>
-                           <tag>words</tag>
+                           "words"
                         </para>
                      </td>
                   </tr>
@@ -1512,7 +1515,7 @@ explican en el documento […]</programlisting>
                         <para>Grund</para>
                      </td>
                      <td>
-                        <para>Wert von <tag>@reason</tag>      </para>
+                        <para>Wert für <tag>@reason</tag></para>
                      </td>
                   </tr>
                </thead>
@@ -1523,28 +1526,29 @@ explican en el documento […]</programlisting>
                      </td>
                      <td>
                         <para>
-                           <tag>fm</tag>
+                           "fm"
                         </para>
                      </td>
                   </tr>
                   <tr>
                      <td>
-                        <para>Unwichtiger Text für den Korpus</para>
+                        <para>Unwichtiger Text für das Korpus</para>
                      </td>
                      <td>
                         <para>
-                           <tag>insignificant</tag>
+                           "insignificant"
                         </para>
                      </td>
                   </tr>
                </tbody>
             </informaltable>
-            <para>Zum Beispiel: <programlisting language="xml" xml:space="preserve">a menudo &lt;gap unit="words" quantity="1" reason="fm"/&gt; entonces de nuevo</programlisting></para>
-            <para>Um die Foliierung korrekt darzustellen und anzuzeigen, wurde jede Seite einzeln kodiert. Selbst wenn mehrere aufeinanderfolgende Seiten ausgelassen werden, wird die fehlende Seite immer mit einer 1 als Nummer kodiert, die der fehlenden Seite entspricht.</para>
+            <para>Zum Beispiel:</para>
+            <programlisting language="xml" xml:space="preserve">a menudo &lt;gap unit="words" quantity="1" reason="fm"/&gt; entonces de nuevo</programlisting>
+            <para>Um die Foliierung korrekt darzustellen und anzuzeigen, wurde jede Seite einzeln kodiert. Selbst wenn mehrere aufeinanderfolgende Seiten ausgelassen werden, wird jede nicht transkribierte Seite einzeln (@quantitiy="1") ausgezeichnet.</para>
          </section>
          <section>
-            <title>Kommentare</title>
-            <para>Die redaktionellen Kommentare wurden mit dem Element <tag>seg</tag> (arbitrary segment) kodiert. Im Gegenzug wurden zwei Elemente verschachtelt: einerseits <tag>orig</tag>, mit dem die kommentierte Textpassage kodiert wurde; andererseits <tag>note</tag>, mit dem der redaktionelle Kommentar selbst kodiert wurde. Das Attribut <tag>@type</tag> wurde in Verbindung mit dem Wert comment verwendet.</para>
+            <title>Stellenkommentar</title>
+            <para>Die redaktionellen Kommentare (Stellenkommentar/Sachanmerkung) wurden mit dem Element <tag>seg</tag> (arbitrary segment) ausgezeichnet, das stets zwei Kindelemente enthält: Zum einen <tag>orig</tag> für den Text aus der Vorlage, der kommentiert wird; zum anderen <tag>note</tag> für die Sachanmerkung an sich. Das Attribut @type in <tag>seg</tag> spezifiziert mit seinem Wert @type="comment" die Kodierung.</para>
                <programlisting language="xml" xml:space="preserve">&lt;seg type="comment">
    &lt;orig>plantarum&lt;/orig>
    &lt;note>Se refiere a "De distributione geographica plantarum secundum
@@ -1555,7 +1559,8 @@ explican en el documento […]</programlisting>
             <title>Daten</title>
             <para>Um die Datumsangaben computerlesbar zu machen, wurde in den Attributen
                   <tag>@when</tag>, <tag>@from</tag> und <tag>@to</tag> sowie <tag>@notBefore</tag>
-               und <tag>@notAfter</tag> das Format JJJJJ-MM-TT verwendet. <itemizedlist>
+               und <tag>@notAfter</tag> das Format JJJJJ-MM-TT verwendet.</para> 
+               <itemizedlist>
                   <listitem>
                      <para>Genaues Datum:</para>
                   </listitem>
@@ -1574,13 +1579,15 @@ explican en el documento […]</programlisting>
                      <para>Ungefähre Zeitspanne:</para>
                   </listitem>
                </itemizedlist>
-            </para>
             <programlisting language="xml" xml:space="preserve">&lt;date notBefore="1804-05-01" notAfter="1804-05-16"&gt;Primera mitad
-   de mayo de 1804&lt;/date&gt;       </programlisting>
-            <para>Darüber hinaus wurde optional das Attribut <tag>@cert</tag> mit den Werten <tag>hoch</tag> und <tag>niedrig</tag> verwendet, um die Sicherheit zu kodieren, mit der das Datum als korrekt bekannt ist.</para>
+   de mayo de 1804&lt;/date&gt;       
+            </programlisting>
+            <para>Darüber hinaus wurde optional das Attribut <tag>@cert</tag> mit den Werten "high" und "low" verwendet, um die Sicherheit zu kodieren, mit der das Datum als korrekt bekannt ist.</para>
          </section>
       </section>
    </section>
+
+  
    <section xml:id="cartas">
       <title>Briefe</title>
       <para>In diesem Projekt wurden Briefe aufgrund ihrer charakteristischen Merkmale besonders behandelt. Was die Metadaten betrifft, so wurden, soweit möglich, der Absender, der Empfänger, der Ort und das Datum des Versands und des Empfangs kodiert. Was die Struktur anbelangt, so wurden, soweit in der Quelle vorhanden, die Postanschrift, der Beginn des Briefes, die Schreibhandlungen (falls es Unterbrechungen gab) und der Schluss des Briefes kodiert. </para>
@@ -1644,8 +1651,8 @@ de mayo de 1804&lt;/date&gt;</programlisting>
 &lt;/correspDesc>      </programlisting>
       </section>
       <section>
-         <title>Postanschrift</title>
-         <para>Die Postanschrift eines Briefes wurde im <tag>openerelement</tag>(Anfang des Briefes) oder im <tag>closer</tag> (Ende des Briefes) kodiert. Sie besteht aus dem <tag>address-Element</tag> und einem oder mehreren <tag>addrLine-Kinderelementen</tag>.</para>
+         <title>Adresse</title>
+         <para>Die Adresse eines Briefes wurde im Element <tag>opener</tag> (Anfang des Briefes) oder im <tag>closer</tag> (Ende des Briefes) kodiert. Sie besteht aus dem <tag>address</tag>-Element und einem oder mehreren <tag>addrLine</tag>-Kinderelementen.</para>
             <programlisting language="xml" xml:space="preserve">&lt;opener>
    &lt;address>
       &lt;addrLine>Berlin, Kronenstraße 6&lt;/addrLine>
@@ -1653,7 +1660,7 @@ de mayo de 1804&lt;/date&gt;</programlisting>
 &lt;/opener> </programlisting>
       </section>
       <section>
-         <title>Anfang des Schreibens</title>
+         <title>Briefanfang</title>
          <para>Der Anfang des Briefes wurde mit dem Element <tag>opener</tag> kodiert, das Datum und die Anrede wurden mit den Elementen <tag>dateline und</tag> <tag>salute</tag> kodiert.</para>
          <para>Im <tag>dateline-Element</tag> wurde das <tag>@rend-Attribut</tag> verwendet, wenn das Datum eingerückt oder rechtsbündig ist. Zum Beispiel:</para>
             <programlisting language="xml" xml:space="preserve">&lt;opener>
@@ -1662,8 +1669,8 @@ de mayo de 1804&lt;/date&gt;</programlisting>
 &lt;/opener></programlisting>
       </section>
       <section>
-         <title>Schreibsitzungen</title>
-         <para>Die Schreibsitzungen wurden mit dem <tag>div-Element</tag> mit zwei Attributen kodiert: Zum einen muss das Attribut <tag>@type</tag> den Wert <tag>writingSession</tag> tragen; zum anderen muss <tag>@n</tag> die Nummer der Schreibsitzung angeben.</para>
+         <title>Schreibakt</title>
+         <para>Die Schreibakte wurden mit dem <tag>div</tag>-Element mit zwei Attributen kodiert: Zum einen muss das Attribut <tag>@type</tag> den Wert <tag>writingSession</tag> tragen; zum anderen muss <tag>@n</tag> die Nummer des Schreibaktes angeben.</para>
             <programlisting language="xml" xml:space="preserve">&lt;div type="writingSession">
    &lt;p>[First writing session]&lt;/p>
 &lt;/div>
@@ -1672,13 +1679,13 @@ de mayo de 1804&lt;/date&gt;</programlisting>
 &lt;/div></programlisting>
       </section>
       <section>
-         <title>Schluss des Schreibens</title>
-         <para>Der Schluss des Briefes wurde im Element <tag>closer</tag> kodiert. Die Anredeformel wurde mit dem Element <tag>salute</tag> kodiert, während die Unterschrift mit dem Element <tag>signed</tag> kodiert wurde. Das <tag>@rend-Attribut</tag>des <tag>closer-Elements</tag> stellt die Form oder das Aussehen des Briefschlusses dar.</para>
+         <title>Briefschluss</title>
+         <para>Der Schluss des Briefes wurde im Element <tag>closer</tag> kodiert. Die Anredeformel wurde mit dem Element <tag>salute</tag> kodiert, während die Unterschrift mit dem Element <tag>signed</tag> kodiert wurde. Das <tag>@rend</tag>-Attribut des <tag>closer</tag>-Elements stellt die Form oder das Aussehen des Briefschlusses dar.</para>
             <informaltable>
                <thead>
                   <tr>
                      <td>
-                        <para>Abschlussschreiben</para>
+                        <para>Briefschluss</para>
                      </td>
                      <td>
                         <para>Wert für <tag>@rend</tag>    </para>
@@ -1721,7 +1728,7 @@ de mayo de 1804&lt;/date&gt;</programlisting>
       </section>
       <section>
          <title>Nachtrag</title>
-         <para>Das Postscript wurde nach dem <tag>Closer</tag> mit dem <tag>Postscript-Element</tag> kodiert. Das Postscript enthält immer mindestens einen Absatz<tag>(p</tag>).</para>
+         <para>Das Postscript wurde nach dem <tag>closer</tag> mit dem <tag>postscript</tag>-Element kodiert. Das Postscript enthält immer mindestens einen Absatz<tag>(p</tag>).</para>
             <programlisting language="xml" xml:space="preserve">&lt;postscript>
    &lt;p>Para Barón von Humboldt&lt;/p>
 &lt;/postscript></programlisting>
