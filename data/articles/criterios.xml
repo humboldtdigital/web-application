@@ -1287,10 +1287,8 @@ explican en el documento […]</programlisting>
                </thead>
                <tbody>
                   <tr>
-                     "illegible"
-                     <td>
-                        <para>unleserlicher Text</para>
-                     </td>
+                     <td>"illegible"</td>
+                     <td><para>unleserlicher Text</para></td>
                   </tr>
                   <tr>
                      <td>
